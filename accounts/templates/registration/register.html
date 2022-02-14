@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %}ثبت نام{% endblock title %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|materializecss }}
+        <button type="submit" class='btn blue waves-effect'>ثبت نام</button>
+    </form>
+{% endblock content %}

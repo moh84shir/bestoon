@@ -1,0 +1,15 @@
+<ol>
+    {% for object in object_list %}
+        <li>
+            <p>
+                <a href="{% url 'incomes:detail' object.pk %}">
+                    {{ object.text }}
+                </a>:
+                {{ object.amount }}
+                 - 
+                {{ object.date }}</p>
+        </li>
+    {% empty %}
+        <p>لیست دخل ها خالیست</p>
+    {% endfor %}
+</ol>

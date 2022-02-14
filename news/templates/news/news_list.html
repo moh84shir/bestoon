@@ -1,0 +1,14 @@
+<ol>
+  {% for object in object_list %}
+  <li>
+    <div>
+      <a href="{% url 'news:detail' object.pk %}"> {{ object.title }} </a>
+    </div>
+  </li>
+  {% empty %}
+  <p>خبری موجود نیست</p>
+  {% endfor %}
+</ol>
+{% if user.is_staff %}
+<a href="{% url 'news:create' %}">اضافه کردن خبر</a>
+{% endif %}
