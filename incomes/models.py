@@ -17,6 +17,10 @@ class Income(models.Model):
 
     objects = IncomeManager()
 
+    class Meta:
+        verbose_name = 'دخل'
+        verbose_name_plural = 'دخل ها'
+
     def get_absolute_url(self):
         return reverse('incomes:detail', kwargs={'pk': self.pk})
 

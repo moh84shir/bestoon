@@ -17,6 +17,10 @@ class Expense(models.Model):
 
     objects = ExpenseManager()
 
+    class Meta:
+        verbose_name = 'خرج'
+        verbose_name_plural = 'خرج ها'
+
     def get_absolute_url(self):
         return reverse('expenses:detail', kwargs={'pk': self.pk})
 
