@@ -6,5 +6,6 @@ urlpatterns = [
     path('incomes/', include('incomes.urls')),
     path('news/', include('news.urls')),
     path('accounts/', include('accounts.urls')),
+    path('', include('settings.urls')),
     path('admin/', admin.site.urls),
 ]

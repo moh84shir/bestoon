@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'expenses.apps.ExpensesConfig',
     'accounts.apps.AccountsConfig',
     'news.apps.NewsConfig',
+    'settings.apps.SettingsConfig',
 ]
 
 MIDDLEWARE = [

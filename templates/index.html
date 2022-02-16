@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock title %}
+{% block content %}
+<div style="text-align:center;">
+    <h1>{{ title }}</h1>
+    <p>{{ about }}</p>
+    <div class="driver"></div>
+    {% if user %}
+    {% comment %} <a href="{% url 'accounts:profile' %}">
+        <button>
+            حساب کاربری
+        </button>
+    </a> {% endcomment %}
+    <a href="#" class="btn waves-effect blue">
+        حساب کاربری
+    </a>
+    {% else %}
+
+        <a href="{% url 'accounts:login' %}" class="btn waves-effect blue">
+            ورود
+        </a>
+        
+        <a href="{% url 'accounts:register' %}" class="btn waves-effect blue">
+            ثبت نام
+        </a>
+
+    {% endif %}
+    <div class="driver"></div>
+    <a target="_blank" href="{{ github_addr }}">آدرس گیت هاب</a>
+</div>
+
+{% endblock content %}
