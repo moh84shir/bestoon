@@ -1,5 +1,12 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %}{% endblock title %}
+{% block content %}
 <ul>
     <li>{{ object.text }}</li>
     <li>{{ object.date }}</li>
     <li>{{ object.amount }}</li>
 </ul>
+
+<a href="{% url 'incomes:list' %}">لیست دخل ها</a>
+{% endblock content %}

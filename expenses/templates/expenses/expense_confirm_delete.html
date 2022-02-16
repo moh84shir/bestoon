@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %}{% endblock title %}
+{% block content %}
 <form method="post">
     {% csrf_token %}
     <p>آیا واقعا میخواهید شیء زیر را حذف کنید <br> "{{ object.text }}"?</p>
@@ -7,3 +11,4 @@
         <button type="button" class="btn blue waves-effect">نه</button>
     </a>
 </form>
+{% endblock content %}

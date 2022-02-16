@@ -1,5 +1,20 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %} {{ object.title }} {% endblock title %}
+{% block content %}
 <ul>
     <li>{{ object.title }}</li>
     <li>{{ object.text }}</li>
     <li>{{ object.date }}</li>
+    <li>
+        فعال
+        {% if object.is_active %}
+            است
+        {% else %}
+            نیست
+        {% endif %}
+    </li>
 </ul>
+
+<a href="{% url 'news:list' %}">لیست اخبار</a>
+{% endblock content %}

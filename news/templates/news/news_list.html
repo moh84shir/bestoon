@@ -1,8 +1,35 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %}لیست اخبار{% endblock title %}
+{% block content %}
 <ol>
   {% for object in object_list %}
   <li>
     <div>
-      <a href="{% url 'news:detail' object.pk %}"> {{ object.title }} </a>
+      <a href="{% url 'news:detail' object.pk %}">
+        <p>
+          {{ object.title }} 
+          - 
+          {% if user.is_staff %}
+            {% if object.is_active %}
+              فعال
+            {% else %}
+              غیر فعال
+            {% endif %}
+            -
+            <a href="{% url 'news:update' object.pk %}">
+              <button class="btn waves-effect white-text green">
+                ویرایش
+              </button>
+            </a>
+            <a href="{% url 'news:delete' object.pk %}">
+              <button class="btn waves-effect white-text red">
+                حذف
+              </button>
+            </a>
+          {% endif %}
+        </p>
+      </a>
     </div>
   </li>
   {% empty %}
@@ -12,3 +39,4 @@
 {% if user.is_staff %}
 <a href="{% url 'news:create' %}">اضافه کردن خبر</a>
 {% endif %}
+{% endblock content %}

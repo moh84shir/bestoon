@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %}{% endblock title %}
+{% block content %}
 <ol>
     {% for object in object_list %}
         <li>
@@ -13,3 +17,5 @@
         <p>لیست دخل ها خالیست</p>
     {% endfor %}
 </ol>
+<a href="{% url 'expenses:create' %}">اضافه کردن دخل</a>
+{% endblock content %}

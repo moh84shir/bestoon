@@ -1,5 +1,10 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %}{% endblock title %}
+{% block content %}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">تایید دخل</button>
 </form>
+{% endblock content %}
