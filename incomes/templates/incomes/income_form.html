@@ -5,6 +5,8 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">تایید دخل</button>
+    <div style="display:flex;justify-content:center;margin-top:2.5rem;">	
+    	<button type="submit" class="btn waves-effect blue">تایید دخل</button>
+    </div>
 </form>
 {% endblock content %}

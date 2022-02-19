@@ -1,0 +1,58 @@
+.center-text {
+  text-align: center;
+}
+
+.about-text {
+  line-height: 160%;
+}
+
+.mt-3 {
+  margin-top: 1.3rem;
+}
+
+.main-sidenav {
+  width: 16rem;
+  padding: 0 !important;
+}
+
+.bar-icon {
+  font-size: 1.5rem;
+}
+
+.amount-text {
+  padding: 0;
+}
+
+.plus-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+}
+
+.form-header {
+  display: flex;
+  justify-content: center;
+}
+
+.form-label {
+  position: relative !important;
+  width: 10%;
+}
+
+.form-header {
+  margin-bottom: 3.4rem;
+}
+
+form input {
+  color: white;
+}
+
+.center-align {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-form__label {
+  line-height: 2.3rem;
+}
