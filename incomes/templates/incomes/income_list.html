@@ -5,14 +5,26 @@
 <ul class="collapsible white black-text amount-text">
     {% for object in object_list %}
         <li>
-            <div class="collapsible-header">{{ object.text }} - <span>{{ object.date }}</span></div>
-            <div class="collapsible-body"><span>{{ object.amount }}</span></div>
+            <div class="collapsible-header">{{ object.text }}</div>
+            <div class="collapsible-body">
+                <span>
+                    {{ object.amount }}
+                </span>
+
+                <br>
+
+                <small>
+                    {{ object.date }}
+                </small>    
+            </div>
         </li>
+    {% empty %}
+        <p>شما هیچ دخلی ندارید</p>
     {% endfor %}
 </ul>
 
 <div class="fixed-action-btn">
-    <a class="btn-floating btn-large black plus-btn" href="{% url 'incomes:create' %}">
+    <a class="btn-floating btn-large black plus-btn" href="{% url 'expenses:create' %}">
         <i class="large fas fa-plus"></i>
     </a>
 </div>

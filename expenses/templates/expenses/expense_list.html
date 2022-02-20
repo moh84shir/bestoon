@@ -2,20 +2,37 @@
 {% load materializecss %}
 {% block title %}{% endblock title %}
 {% block content %}
-<ol>
+<ul class="collapsible white black-text amount-text">
     {% for object in object_list %}
         <li>
-            <p>
-                <a href="{% url 'expenses:detail' object.pk %}">
-                    {{ object.text }}
-                </a>:
-                {{ object.amount }}
-                 - 
-                {{ object.date }}</p>
+            <div class="collapsible-header">{{ object.text }}</div>
+            <div class="collapsible-body">
+                <span>
+                    {{ object.amount }}
+                </span>
+
+                <br>
+
+                <small>
+                    {{ object.date }}
+                </small>
+
+                <br>
+
+                <div style="display:flex; justify-content: space-between;width: 11rem;">
+                    <a href="#" class="btn waves-effect blue">ویرایش</a>
+                    <a href="#" class="btn waves-effect blue">حذف</a>
+                </div>    
+            </div>
         </li>
     {% empty %}
-        <p>لیست خرج ها خالیست</p>
+        <p>شما هیچ خرجی ندارید</p>
     {% endfor %}
-</ol>
-<a href="{% url 'expenses:create' %}">اضافه کردن خرج</a>
+</ul>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large black plus-btn" href="{% url 'expenses:create' %}">
+        <i class="large fas fa-plus"></i>
+    </a>
+</div>
 {% endblock content %}
