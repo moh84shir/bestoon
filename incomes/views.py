@@ -10,9 +10,9 @@ class IncomeList(LoginRequiredMixin, ListView):
         return Income.objects.get_by_user(self.request.user).order_by('-pk')
 
 
-class IncomeDetail(LoginRequiredMixin, DetailView):
-    def get_queryset(self):
-        return Income.objects.get_by_user(self.request.user)
+# class IncomeDetail(LoginRequiredMixin, DetailView):
+#     def get_queryset(self):
+#         return Income.objects.get_by_user(self.request.user)
 
 
 class CreateIncome(LoginRequiredMixin, CreateView):

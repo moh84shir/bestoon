@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load materializecss %}
-{% block title %}{% endblock title %}
+{% block title %}{{ object.text }}{% endblock title %}
 {% block content %}
 <ul>
     <li>{{ object.text }}</li>

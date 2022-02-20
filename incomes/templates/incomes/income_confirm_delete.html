@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load materializecss %}
-{% block title %}{% endblock title %}
+{% block title %}حذف {{ object.text }}{% endblock title %}
 {% block content %}
 <form method="post">
     {% csrf_token %}

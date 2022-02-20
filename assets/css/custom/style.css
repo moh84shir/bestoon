@@ -56,3 +56,9 @@ form input {
 .submit-form__label {
   line-height: 2.3rem;
 }
+
+.action-wrapper {
+  display:flex;
+  justify-content: space-between;
+  width: 11rem;
+}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load materializecss %}
-{% block title %}{% endblock title %}
+{% block title %}لیست دخل ها{% endblock title %}
 {% block content %}
 <ul class="collapsible white black-text amount-text">
     {% for object in object_list %}
@@ -15,7 +15,14 @@
 
                 <small>
                     {{ object.date }}
-                </small>    
+                </small>
+
+                <br>
+                
+                <div class="action-wrapper">
+                    <a href="#" class="btn waves-effect blue">ویرایش</a>
+                    <a href="#" class="btn waves-effect blue">حذف</a>
+                </div>
             </div>
         </li>
     {% empty %}

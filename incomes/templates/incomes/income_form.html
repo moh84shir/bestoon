@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load materializecss %}
-{% block title %}{% endblock title %}
+{% block title %}اضافه کردن دخل جدید{% endblock title %}
 {% block content %}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <div style="display:flex;justify-content:center;margin-top:2.5rem;">	
+    <div style="center-align">	
     	<button type="submit" class="btn waves-effect blue">تایید دخل</button>
     </div>
 </form>

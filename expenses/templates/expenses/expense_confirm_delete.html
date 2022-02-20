@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load materializecss %}
-{% block title %}{% endblock title %}
+{% block title %}حدف {{ object.text }}{% endblock title %}
 {% block content %}
 <form method="post">
     {% csrf_token %}
     <p>آیا واقعا میخواهید شیء زیر را حذف کنید <br> "{{ object.text }}"?</p>
     {{ form }}
-    <input type="submit" value="بله" class="btn blue waves-effect">
+    <button type="submit" class="btn blue waves-effect">بله</button>
     <a href="{% url 'expenses:list' %}">
         <button type="button" class="btn blue waves-effect">نه</button>
     </a>
