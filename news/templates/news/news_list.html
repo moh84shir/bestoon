@@ -1,53 +1,44 @@
 {% extends "base.html" %}
 {% load materializecss %}
-{% block title %}لیست اخبار{% endblock title %}
+{% block title %}
+    لیست خرج ها
+{% endblock title %}
 {% block content %}
-<form action="{% url 'news:search' %}" method="GET">
-    <div class="input-field">
-        <p style="display: flex;">
-          <input type="text" name="q" placeholder="جستجو" value="{{ request.GET.q }}">
-          <button
-          type="submit"
-          class="search-btn btn waves-effect blue"
-          ><i class="fa fa-search"></i></button>
-        </p>
-    </div>
-</form>
-<ol>
-  {% for object in object_list %}
-  <li>
-    <div>
-      <a href="{% url 'news:detail' object.pk %}">
-        <p>
-          {{ object.title }} 
-          - 
-          {% if user.is_staff %}
-            {% if object.is_active %}
-              فعال
-            {% else %}
-              غیر فعال
-            {% endif %}
-            -
-            <a href="{% url 'news:update' object.pk %}">
-              <button class="btn waves-effect white-text green">
-                ویرایش
-              </button>
-            </a>
-            <a href="{% url 'news:delete' object.pk %}">
-              <button class="btn waves-effect white-text red">
-                حذف
-              </button>
-            </a>
-          {% endif %}
-        </p>
-      </a>
-    </div>
-  </li>
-  {% empty %}
-  <p>خبری یافت نشد</p>
-  {% endfor %}
-</ol>
-{% if user.is_staff %}
-<a href="{% url 'news:create' %}">اضافه کردن خبر</a>
-{% endif %}
+    {% include 'components/search.html' with app_name='news' %}
+    <ul class="collapsible white black-text amount-text">
+        {% for object in object_list %}
+            <li>
+                <div class="collapsible-header">{{ object.title }}</div>
+                <div class="collapsible-body">
+                    <p>{{ object.text }}</p>
+                    <br />
+                    <small>{{ object.date }}</small>
+                    <br />
+                    {% if user.is_staff %}
+                      <div class="action-wrapper">
+                          <a href=" {% url 'news:update' object.pk %} "
+                             class="btn waves-effect blue">ویرایش</a>
+                          <a href=" {% url 'news:delete' object.pk %} "
+                             class="btn waves-effect blue">حذف</a>
+                      </div>                    
+                    {% endif %}
+                </div>
+            </li>
+        {% empty %}
+            <p>
+               خرجی یافت نشد
+            </p>
+        {% endfor %}
+    </ul>
+    
+  {% if user.is_staff %}
+      <div class="fixed-action-btn">
+          <a class="btn-floating btn-large black plus-btn"
+             href="{% url 'news:create' %}">
+              <i class="large fas fa-plus"></i>
+          </a>
+      </div>
+  {% endif %}
+
+
 {% endblock content %}

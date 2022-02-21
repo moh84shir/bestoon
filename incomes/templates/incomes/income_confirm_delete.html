@@ -6,9 +6,9 @@
     {% csrf_token %}
     <p>آیا واقعا میخواهید شیء زیر را حذف کنید <br> "{{ object.text }}"?</p>
     {{ form }}
-    <input type="submit" value="بله">
+    <input type="submit" value="بله" class="btn waves-effect red">
     <a href="{% url 'expenses:list' %}">
-        <button type="button">نه</button>
+        <button type="button" class="btn waves-effect blue">نه</button>
     </a>
 </form>
 {% endblock content %}

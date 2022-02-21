@@ -1,0 +1,11 @@
+<form action="/{{ app_name }}/search" method="GET">
+    <div class="input-field">
+        <p style="display: flex;">
+          <input type="text" name="q" placeholder="جستجو" value="{{ request.GET.q }}">
+          <button
+          type="submit"
+          class="search-btn btn waves-effect blue"
+          ><i class="fa fa-search"></i></button>
+        </p>
+    </div>
+</form>

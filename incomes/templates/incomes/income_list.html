@@ -2,17 +2,7 @@
 {% load materializecss %}
 {% block title %}لیست دخل ها{% endblock title %}
 {% block content %}
-<form action="{% url 'incomes:search' %}" method="GET">
-    <div class="input-field">
-        <p style="display: flex;">
-          <input type="text" name="q" placeholder="جستجو" value="{{ request.GET.q }}">
-          <button
-          type="submit"
-          class="search-btn btn waves-effect blue"
-          ><i class="fa fa-search"></i></button>
-        </p>
-    </div>
-</form>
+{% include 'components/search.html' with app_name='incomes' %}
 <ul class="collapsible white black-text amount-text">
     {% for object in object_list %}
         <li>
@@ -31,8 +21,8 @@
                 <br>
                 
                 <div class="action-wrapper">
-                    <a href="#" class="btn waves-effect blue">ویرایش</a>
-                    <a href="#" class="btn waves-effect blue">حذف</a>
+                    <a href="{% url 'incomes:update' object.pk %}" class="btn waves-effect blue">ویرایش</a>
+                    <a href="{% url 'incomes:delete' object.pk %}" class="btn waves-effect blue">حذف</a>
                 </div>
             </div>
         </li>

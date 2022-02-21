@@ -22,8 +22,13 @@
 {% endblock navbar_btns %}
 {% block buttons %}
     {% if user %}
-    zereshk
-        <a href="#" class="btn waves-effect blue">حساب کاربری</a>
+        <div class="row">
+            <a class="btn waves-effect blue" href="{% url 'expenses:list' %}">خرج ها</a>
+            <a class="btn waves-effect blue" href="{% url 'incomes:list' %}">دخل ها</a>
+            <a class="btn waves-effect blue" href="{% url 'news:list' %}">اخبار</a>
+        </div>
+        <br>
+        <br>
         <a href="{% url 'accounts:logout' %}" class="btn waves-effect blue">خروج</a>
     {% else %}
         <a href="{% url 'accounts:login' %}" class="btn waves-effect blue">ورود</a>
