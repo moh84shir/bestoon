@@ -5,6 +5,8 @@
     <form method="post">
         {% csrf_token %}
         {{ form|materializecss }}
-        <button type="submit" class='btn blue waves-effect'>تایید خرج</button>
+        <div class="center-align">
+            <button type="submit" class='btn blue waves-effect'>تایید خرج</button>
+        </div>
     </form>
 {% endblock content %}

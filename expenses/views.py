@@ -33,3 +33,14 @@ class UpdateExpense(LoginRequiredMixin, UserObjectRequired, UpdateView):
 class DeleteExpense(LoginRequiredMixin, UserObjectRequired, DeleteView):
     model = Expense
     success_url = reverse_lazy('expenses:list')
+
+
+class SearchExpense(ListView):
+    def get_queryset(self):
+        request = self.request
+        user = self.request.user
+        query = request.GET.get('q')
+
+        if query is not None:
+            return Expense.objects.search(query, user)
+        return Expense.objects.get_by_user(user).order_by('-pk')

@@ -1,10 +1,18 @@
 from django.db import models
 from django.urls import reverse
+from django.db.models import Q
 
 
 class NewsManager(models.Manager):
     def get_active_news(self):
         return self.get_queryset().filter(is_active=True)
+
+    def search(self, query, user):
+        lookup = Q(title__icontains=query)
+        if user.is_staff:
+            return self.get_queryset().filter(lookup).distinct()
+        else:
+            return self.get_queryset().filter(lookup, is_active=True).distinct()
 
 
 class News(models.Model):

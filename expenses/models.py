@@ -1,11 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.db.models import Q
 
 
 class ExpenseManager(models.Manager):
     def get_by_user(self, user):
         return self.get_queryset().filter(user=user)
+
+    def search(self, query, user):
+        lookup = Q(text__icontains=query)
+        return self.get_queryset().filter(lookup, user=user).distinct()
 
 
 class Expense(models.Model):

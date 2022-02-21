@@ -10,9 +10,9 @@ class IncomeList(LoginRequiredMixin, ListView):
         return Income.objects.get_by_user(self.request.user).order_by('-pk')
 
 
-# class IncomeDetail(LoginRequiredMixin, DetailView):
-#     def get_queryset(self):
-#         return Income.objects.get_by_user(self.request.user)
+class IncomeDetail(LoginRequiredMixin, DetailView):
+    def get_queryset(self):
+        return Income.objects.get_by_user(self.request.user)
 
 
 class CreateIncome(LoginRequiredMixin, CreateView):
@@ -33,3 +33,15 @@ class UpdateIncome(LoginRequiredMixin, UserObjectRequired, UpdateView):
 class DeleteIncome(LoginRequiredMixin, UserObjectRequired, DeleteView):
     model = Income
     success_url = reverse_lazy('incomes:list')
+
+
+
+class SearchIncome(ListView):
+    def get_queryset(self):
+        request = self.request
+        user = self.request.user
+        query = request.GET.get('q')
+
+        if query is not None:
+            return Income.objects.search(query, user)
+        return Income.objects.get_by_user(user).order_by('-pk')
