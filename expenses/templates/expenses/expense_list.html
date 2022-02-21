@@ -4,6 +4,17 @@
     لیست خرج ها
 {% endblock title %}
 {% block content %}
+    <form action="{% url 'expenses:search' %}" method="GET">
+        <div class="input-field">
+            <p style="display: flex;">
+              <input type="text" name="q" placeholder="جستجو" value="{{ request.GET.q }}">
+              <button
+              type="submit"
+              class="search-btn btn waves-effect blue"
+              ><i class="fa fa-search"></i></button>
+            </p>
+        </div>
+    </form>
     <ul class="collapsible white black-text amount-text">
         {% for object in object_list %}
             <li>
@@ -23,7 +34,7 @@
             </li>
         {% empty %}
             <p>
-                شما هیچ خرجی ندارید
+               خرجی یافت نشد
             </p>
         {% endfor %}
     </ul>

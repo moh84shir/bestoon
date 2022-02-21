@@ -35,3 +35,15 @@ class UpdateNews(LoginRequiredMixin, StaffUserRequired, UpdateView):
 class DeleteNews(LoginRequiredMixin, StaffUserRequired, DeleteView):
     model = News
     success_url = reverse_lazy('news:list')
+
+
+class SearchNews(ListView):
+    def get_queryset(self):
+        request = self.request
+        user = self.request.user
+        query = request.GET.get('q')
+
+        if query is not None:
+            return News.objects.search(query, user)
+
+        return News.objects.get_active_news()

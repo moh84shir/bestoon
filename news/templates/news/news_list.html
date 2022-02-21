@@ -2,6 +2,17 @@
 {% load materializecss %}
 {% block title %}لیست اخبار{% endblock title %}
 {% block content %}
+<form action="{% url 'news:search' %}" method="GET">
+    <div class="input-field">
+        <p style="display: flex;">
+          <input type="text" name="q" placeholder="جستجو" value="{{ request.GET.q }}">
+          <button
+          type="submit"
+          class="search-btn btn waves-effect blue"
+          ><i class="fa fa-search"></i></button>
+        </p>
+    </div>
+</form>
 <ol>
   {% for object in object_list %}
   <li>
@@ -33,7 +44,7 @@
     </div>
   </li>
   {% empty %}
-  <p>خبری موجود نیست</p>
+  <p>خبری یافت نشد</p>
   {% endfor %}
 </ol>
 {% if user.is_staff %}
