@@ -35,7 +35,6 @@ class DeleteIncome(LoginRequiredMixin, UserObjectRequired, DeleteView):
     success_url = reverse_lazy('incomes:list')
 
 
-
 class SearchIncome(ListView):
     def get_queryset(self):
         request = self.request
@@ -45,3 +44,4 @@ class SearchIncome(ListView):
         if query is not None:
             return Income.objects.search(query, user)
         return Income.objects.get_by_user(user).order_by('-pk')
+
