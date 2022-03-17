@@ -9,7 +9,9 @@
             {{ about }}
         </p>
         <div class="center-align">
-            <a class="green btn waves-effect" target="_blank" href="{{ github_addr }}">آدرس گیت هاب</a>
+            <a class="green btn btn-large waves-effect row" target="_blank" href="{{ github_addr }}">آدرس گیت هاب</a>
+            
+            <a class="green btn btn-large waves-effect row" href="{% url 'export_pdf' %}">خروجی PDF دخل و خرج ها تا الان</a>
         </div>
     </div>
     <br>

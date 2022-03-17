@@ -1,42 +1,43 @@
 {% extends "base.html" %}
 {% load materializecss %}
-{% block title %}
-    لیست خرج ها
-{% endblock title %}
+{% block title %}لیست خرج ها{% endblock title %}
+{% block navbar_btns %}
+<a class="btn waves-effect blue" href="{% url 'expenses:list' %}">خرج ها</a>
+<a class="btn waves-effect blue" href="{% url 'incomes:list' %}">دخل ها</a>
+<a class="btn waves-effect blue" href="{% url 'news:list' %}">اخبار</a>
+<a href="{% url 'accounts:logout' %}" class="btn waves-effect blue">خروج</a>
+{% endblock navbar_btns %}
 {% block content %}
-    {% include 'components/search.html' with app_name='news' %}
-    <ul class="collapsible white black-text amount-text">
-        {% for object in object_list %}
-            <li>
-                <div class="collapsible-header">{{ object.title }}</div>
-                <div class="collapsible-body">
-                    <p>{{ object.text }}</p>
-                    <br />
-                    <small>{{ object.date }}</small>
-                    <br />
-                    {% if user.is_staff %}
-                      <div class="action-wrapper">
-                          <a href=" {% url 'news:update' object.pk %} "
-                             class="btn waves-effect blue">ویرایش</a>
-                          <a href=" {% url 'news:delete' object.pk %} "
-                             class="btn waves-effect blue">حذف</a>
-                      </div>                    
-                    {% endif %}
-                </div>
-            </li>
-        {% empty %}
-            <p class="err-txt">
-               خرجی یافت نشد
-            </p>
-        {% endfor %}
-    </ul>
-    
-  {% if user.is_staff %}
-      <div class="fixed-action-btn">
-          <a class="btn-floating btn-large black plus-btn"
-             href="{% url 'news:create' %}">
-              <i class="large fas fa-plus"></i>
-          </a>
-      </div>
-  {% endif %}
+{% include 'components/search.html' with app_name='news' %}
+<ul class="collapsible white black-text amount-text">
+    {% for object in object_list %}
+    <li>
+        <div class="collapsible-header">{{ object.title }}</div>
+        <div class="collapsible-body">
+            <p>{{ object.text }}</p>
+            <br />
+            <small>{{ object.date }}</small>
+            <br />
+            {% if user.is_staff %}
+            <div class="action-wrapper">
+                <a href=" {% url 'news:update' object.pk %} " class="btn waves-effect blue">ویرایش</a>
+                <a href=" {% url 'news:delete' object.pk %} " class="btn waves-effect blue">حذف</a>
+            </div>
+            {% endif %}
+        </div>
+    </li>
+    {% empty %}
+    <p class="err-txt">
+        خرجی یافت نشد
+    </p>
+    {% endfor %}
+</ul>
+
+{% if user.is_staff %}
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large black plus-btn" href="{% url 'news:create' %}">
+        <i class="large fas fa-plus"></i>
+    </a>
+</div>
+{% endif %}
 {% endblock content %}

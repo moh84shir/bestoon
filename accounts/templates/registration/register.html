@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% load materializecss %}
 {% block title %}ثبت نام{% endblock title %}
+{% block navbar_btns %}
+<a href="{% url 'accounts:login' %}" class="btn waves-effect blue">ورود</a>
+{% endblock navbar_btns %}
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form|materializecss }}
-	<div class="center-align">
-		<button type="submit" class='btn blue waves-effect'>ثبت نام</button>
-    	</div>
-    </form>
+<form method="post">
+    {% csrf_token %}
+    {{ form|materializecss }}
+    <div class="center-align">
+        <button type="submit" class='btn blue waves-effect'>ثبت نام</button>
+    </div>
+</form>
 {% endblock content %}
