@@ -10,18 +10,12 @@ from .models import Income
 class IncomeList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         """ returns an instance of the model object for every user who visits this page """
-        # The method order_by() takes a string argument that specifies how you want your models sorted;
-        # here we use -pk because our primary key values are integers instead of strings like most other models
-        # would be using as their primary keys
         return Income.objects.get_by_user(self.request.user).order_by('-pk')
 
 
 class IncomeDetail(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         """ returns an instance of the model object for every user who visits this page """
-        # The method order_by() takes a string argument that specifies how you want your models sorted;
-        # here we use -pk because our primary key values are integers instead of strings like most other models
-        # would be using as their primary keys
         return Income.objects.get_by_user(self.request.user)
 
 
@@ -59,11 +53,11 @@ class SearchIncome(ListView):
     def get_queryset(self):
         request = self.request
         user = self.request.user
-        query = request.GET.get('q') # find search query
+        query = request.GET.get('q')  # find search query
 
         # check quert
         if query is not None:
             return Income.objects.search(query, user)
-        
+
         # return income list if query is none
         return Income.objects.get_by_user(user).order_by('-pk')

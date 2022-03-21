@@ -21,7 +21,7 @@
   <style>
     @font-face {
       font-family: Estedad;
-      src: url({% static "fonts/estedad/Estedad.ttf" %}) format(truetype);
+      src: url("{% static 'fonts/estedad/Estedad.ttf' %}");
     }
 
     *,
@@ -35,17 +35,17 @@
 
 <body class="grey darken-3 white-text">
   <header>
-      <section class="header navbar-fixed">
-          <nav class="grey">
-              <div class="nav-wrapper container">
-                  <a href="/" class="brand-logo">بستون</a>
-                  {% block bar %}{% endblock bar %}
-                  <ul class="left hide-on-med-and-down">
-                    {% block navbar_btns %}{% endblock navbar_btns %}
-                  </ul>
-              </div>
-          </nav>
-      </section>
+    <section class="header navbar-fixed">
+      <nav class="grey">
+        <div class="nav-wrapper container">
+          <a href="/" class="brand-logo">بستون</a>
+          {% block bar %}{% endblock bar %}
+          <ul class="left hide-on-med-and-down">
+            {% block navbar_btns %}{% endblock navbar_btns %}
+          </ul>
+        </div>
+      </nav>
+    </section>
 
   </header>
 

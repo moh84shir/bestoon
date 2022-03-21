@@ -3,11 +3,9 @@ from .models import SiteSetting
 
 
 def index(request):
-    setting_obj = None
-    try:
-        setting_obj = SiteSetting.objects.last()
-    except:
-        setting_obj = SiteSetting.objects.create()
+    setting_obj = SiteSetting.objects.last()
+    if setting_obj is None:
+        SiteSetting.objects.create()
             
     user = request.user
     if user.is_anonymous:
