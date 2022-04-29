@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.db.models import Q
+from tinymce.models import HTMLField
 
 
 class NewsManager(models.Manager):
@@ -28,7 +29,7 @@ class News(models.Model):
         verbose_name_plural = 'اخبار'
 
     def get_absolute_url(self):
-        return reverse('news:detail', kwargs={'pk':self.pk})
+        return reverse('news:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title

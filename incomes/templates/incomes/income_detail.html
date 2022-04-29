@@ -2,16 +2,16 @@
 {% load materializecss %}
 {% block title %}{{ object.text }}{% endblock title %}
 {% block navbar_btns %}
-<a class="btn waves-effect blue" href="{% url 'expenses:list' %}">خرج ها</a>
-<a class="btn waves-effect blue" href="{% url 'incomes:list' %}">دخل ها</a>
-<a class="btn waves-effect blue" href="{% url 'news:list' %}">اخبار</a>
-<a href="{% url 'accounts:logout' %}" class="btn waves-effect blue">خروج</a>
+    <a class="btn waves-effect blue" href="{% url 'expenses:list' %}">خرج ها</a>
+    <a class="btn waves-effect blue" href="{% url 'incomes:list' %}">دخل ها</a>
+    <a class="btn waves-effect blue" href="{% url 'news:list' %}">اخبار</a>
+    <a href="{% url 'accounts:logout' %}" class="btn waves-effect blue">خروج</a>
 {% endblock navbar_btns %}
 {% block content %}
-<ul>
-    <li>{{ object.text }}</li>
-    <li>{{ object.date }}</li>
-    <li>{{ object.amount }}</li>
-</ul>
-<a href="{% url 'incomes:list' %}">لیست دخل ها</a>
+    <ul>
+        <li>{{ object.text }}</li>
+        <li>{{ object.date }}</li>
+        <li>{{ object.amount }}</li>
+    </ul>
+    <a href="{% url 'incomes:list' %}">لیست دخل ها</a>
 {% endblock content %}

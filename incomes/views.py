@@ -55,7 +55,7 @@ class SearchIncome(ListView):
         user = self.request.user
         query = request.GET.get('q')  # find search query
 
-        # check quert
+        # check query
         if query is not None:
             return Income.objects.search(query, user)
 

@@ -1,60 +1,66 @@
-{% load materializecss %}
-{% load static %}
+{% load materializecss %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href='{% static "css/materialize/materialize.min.css" %}'
+    />
+    <script src='{% static "js/materialize/materialize.min.js" %}'></script>
 
-<head>
-  <meta charset='UTF-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <link rel='stylesheet' href='{% static "css/materialize/materialize.min.css" %}'>
-  <script src='{% static "js/materialize/materialize.min.js" %}'></script>
+    <link rel="stylesheet" href='{% static "css/fontawsome/all.min.css" %}' />
+    <script src='{% static "js/fontawsome/all.min.js" %}'></script>
 
+    <link rel="stylesheet" href="{% static 'css/custom/style.css' %}" />
+    <script src="{% static 'js/custom/script.js' %}"></script>
 
-  <link rel='stylesheet' href='{% static "css/fontawsome/all.min.css" %}'>
-  <script src='{% static "js/fontawsome/all.min.js" %}'></script>
+    <title>{% block title %}{% endblock title %}</title>
+    <style>
+      @font-face {
+        font-family: Estedad;
+        src: url("{% static 'fonts/estedad/Estedad.ttf' %}");
+      }
 
-  <link rel="stylesheet" href="{% static 'css/custom/style.css' %}">
-  <script src="{% static 'js/custom/script.js' %}"></script>
+      *,
+      body {
+        font-family: Estedad, "Estedad" !important;
+        direction: rtl !important;
+        text-align: right !important;
+      }
+    </style>
+  </head>
 
-  <title>{% block title %}{% endblock title %}</title>
-  <style>
-    @font-face {
-      font-family: Estedad;
-      src: url("{% static 'fonts/estedad/Estedad.ttf' %}");
-    }
+  <body class="grey darken-3 white-text">
+    <header>
+      <section class="header navbar-fixed">
+        <nav class="grey">
+          <div class="nav-wrapper container">
+            <a href="/" class="brand-logo">بستون</a>
+            {% block bar %}{% endblock bar %}
+            <ul class="left hide-on-med-and-down">
+              {% block navbar_btns %}{% endblock navbar_btns %}
+            </ul>
+          </div>
+        </nav>
+      </section>
+    </header>
 
-    *,
-    body {
-      font-family: Estedad, "Estedad" !important;
-      direction: rtl !important;
-      text-align: right !important;
-    }
-  </style>
-</head>
-
-<body class="grey darken-3 white-text">
-  <header>
-    <section class="header navbar-fixed">
-      <nav class="grey">
-        <div class="nav-wrapper container">
-          <a href="/" class="brand-logo">بستون</a>
-          {% block bar %}{% endblock bar %}
-          <ul class="left hide-on-med-and-down">
-            {% block navbar_btns %}{% endblock navbar_btns %}
-          </ul>
+    <main>
+      <div class="container">
+        {% block content %}{% endblock content %}
+        <div class="hide-on-large-only">
+          {% block buttons %}{% endblock buttons %}
         </div>
-      </nav>
-    </section>
-
-  </header>
-
-  <main>
-    <div class="container">
-      {% block content %}{% endblock content %}
-      <div class="hide-on-large-only">{% block buttons %}{% endblock buttons %}</div>
-    </div>
-  </main>
-</body>
-
+      </div>
+    </main>
+    <script>
+      var textAreas = document.querySelectorAll('textarea');
+      for (textArea of textAreas) {
+        textArea.style.color = '#ffffff'
+      }
+    </script>
+  </body>
 </html>

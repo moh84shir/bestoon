@@ -1,5 +1,9 @@
 from django.contrib.auth.views import (
-    LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
+    LoginView,
+    LogoutView,
+    PasswordChangeView,
+    PasswordChangeDoneView
+)
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,7 +18,7 @@ class Login(LoggedInRedirectMixin, LoginView):
 class Register(LoggedInRedirectMixin, CreateView):
     form_class = UserCreationForm
     template_name = 'registration/register.html'
-    success_url = '/'
+    success_url = 'accounts:login'
 
 
 class Logout(LoginRequiredMixin, LogoutView):

@@ -10,4 +10,5 @@ urlpatterns = [
     path('', include('settings.urls')),
     path('pdf/', results_export_pdf, name="export_pdf"),
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
 ]

@@ -1,4 +1,13 @@
 from django.contrib import admin
-from . import models
+from .models import Income
+
+
+class IncomeAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Income
+
+    list_display = ('text', 'date', 'amount', 'user')
+
+
 # Register your models here.
-admin.site.register(models.Income)
+admin.site.register(Income, IncomeAdmin)
