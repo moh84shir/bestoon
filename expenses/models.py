@@ -30,6 +30,4 @@ class Expense(models.Model):
         return reverse('expenses:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return f"{self.date}-{self.user}-{self.amount}"
-
-
+        return self.text
