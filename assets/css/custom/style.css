@@ -1,3 +1,9 @@
+.content-section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 5rem;
+}
 .center-text {
   text-align: center;
 }

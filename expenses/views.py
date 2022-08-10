@@ -1,8 +1,10 @@
-from django.urls import reverse_lazy
-from .models import Expense
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from bestoon.mixins import UserObjectRequired
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .mixins import UserObjectRequired
+from django.urls import reverse_lazy
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
+
+from .models import Expense
 
 
 class ExpenseList(LoginRequiredMixin, ListView):
@@ -10,14 +12,12 @@ class ExpenseList(LoginRequiredMixin, ListView):
         return Expense.objects.get_by_user(self.request.user).order_by('-pk')
 
 
-class ExpenseDetail(LoginRequiredMixin, DetailView):
-    def get_queryset(self):
-        return Expense.objects.get_by_user(self.request.user)
 
 
 class CreateExpense(LoginRequiredMixin, CreateView):
     model = Expense
     fields = ['text', 'amount']
+    success_url = reverse_lazy('expenses:list')
 
     def form_valid(self, form):
         self.obj = form.save(commit=False)

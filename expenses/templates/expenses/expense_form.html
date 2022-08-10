@@ -8,11 +8,12 @@
 <a href="{% url 'accounts:logout' %}" class="btn waves-effect blue">خروج</a>
 {% endblock navbar_btns %}
 {% block content %}
+    <h4 class="blue-text center-align  ">اضافه کردن خرج جدید</h4>
     <form method="post">
         {% csrf_token %}
         {{ form|materializecss }}
         <div class="center-align">
-            <button type="submit" class='btn blue waves-effect'>تایید خرج</button>
+            <button type="submit" class='btn btn-large blue waves-effect'>تایید خرج</button>
         </div>
     </form>
 {% endblock content %}

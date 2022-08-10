@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
-from .mixins import UserObjectRequired
+from bestoon.mixins import UserObjectRequired
 from .models import Income
 
 
@@ -13,15 +13,10 @@ class IncomeList(LoginRequiredMixin, ListView):
         return Income.objects.get_by_user(self.request.user).order_by('-pk')
 
 
-class IncomeDetail(LoginRequiredMixin, DetailView):
-    def get_queryset(self):
-        """ returns an instance of the model object for every user who visits this page """
-        return Income.objects.get_by_user(self.request.user)
-
-
 class CreateIncome(LoginRequiredMixin, CreateView):
     model = Income
     fields = ['text', 'amount']
+    success_url = reverse_lazy('incomes:list')
 
     def form_valid(self, form):
         """called form_valid and the other called create."""

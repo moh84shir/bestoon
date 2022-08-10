@@ -26,8 +26,5 @@ class Expense(models.Model):
         verbose_name = 'خرج'
         verbose_name_plural = 'خرج ها'
 
-    def get_absolute_url(self):
-        return reverse('expenses:detail', kwargs={'pk': self.pk})
-
     def __str__(self):
         return self.text

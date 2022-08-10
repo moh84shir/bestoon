@@ -48,11 +48,3 @@ class IncomeModelTests(TestCase):
         self.assertEqual(no_response.status_code, 404)
         self.assertTemplateUsed(
             response, 'incomes/income_detail.html')
-
-    def test_income_model_get_absolute_url(self):
-        # gau = get_absolute_url
-        income_detail_url_from_gau_method = self.income.get_absolute_url()
-        custom_income_detail_url = reverse(
-            'incomes:detail', kwargs={'pk': self.income.pk})
-        self.assertEqual(income_detail_url_from_gau_method,
-                         custom_income_detail_url)

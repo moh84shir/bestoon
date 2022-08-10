@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{% static 'css/custom/style.css' %}" />
     <script src="{% static 'js/custom/script.js' %}"></script>
 
-    <title>{% block title %}{% endblock title %}</title>
+    <title>بستون | {% block title %}{% endblock title %}</title>
     <style>
       @font-face {
         font-family: Estedad;
@@ -39,7 +39,7 @@
         <nav class="grey">
           <div class="nav-wrapper container">
             <a href="/" class="brand-logo">بستون</a>
-            {% block bar %}{% endblock bar %}
+              {% block bar %}{% endblock bar %}
             <ul class="left hide-on-med-and-down">
               {% block navbar_btns %}{% endblock navbar_btns %}
             </ul>
@@ -47,9 +47,8 @@
         </nav>
       </section>
     </header>
-
     <main>
-      <div class="container">
+      <div class="container content-section">
         {% block content %}{% endblock content %}
         <div class="hide-on-large-only">
           {% block buttons %}{% endblock buttons %}

@@ -50,10 +50,3 @@ class ExpenseModelTests(TestCase):
         self.assertTemplateUsed(
             response, 'expenses/expense_detail.html')
 
-    def test_expense_model_get_absolute_url(self):
-        # gau = get_absolute_url
-        expense_detail_url_from_gau_method = self.expense.get_absolute_url()
-        custom_expense_detail_url = reverse(
-            'expenses:detail', kwargs={'pk': self.expense.pk})
-        self.assertEqual(expense_detail_url_from_gau_method,
-                         custom_expense_detail_url)
